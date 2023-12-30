@@ -11,7 +11,7 @@ type ResponseIF = {
 export async function apiClient<Response>(request: RequestIF): Promise<Response & ResponseIF> {
   try {
     // const result = await fetch(`http://localhost:3000/dev${request.path}`, {
-    const result = await fetch(`https://utld7h06jg.execute-api.ap-northeast-1.amazonaws.com/dev${request.path}`, {
+    const result = await fetch(`https://ntsrfhf53c.execute-api.ap-northeast-1.amazonaws.com/dev${request.path}`, {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
