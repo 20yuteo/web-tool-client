@@ -4,12 +4,29 @@ type RequestIF = {
   body?: Record<string, unknown>; 
 }
 
-export async function apiClient<Response>(request: RequestIF): Promise<Response> {
-  const result = await fetch(`http://localhost:3000/dev${request.path}`, {
-    method: request.method,
-    body: JSON.stringify(request.body),
-  });
+type ResponseIF = {
+  ok: boolean;
+}
 
-  const res: Response = await result.json();
-  return res;
+export async function apiClient<Response>(request: RequestIF): Promise<Response & ResponseIF> {
+  try {
+    // const result = await fetch(`http://localhost:3000/dev${request.path}`, {
+    const result = await fetch(`https://utld7h06jg.execute-api.ap-northeast-1.amazonaws.com/dev${request.path}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      method: request.method,
+      body: JSON.stringify(request.body),
+    });
+  
+    const res: Response = await result.json();
+    return {
+      ok: result.ok,
+      res
+    } as unknown as Response & ResponseIF;
+
+  } catch {
+    throw new Error("API Error");
+  }
 }

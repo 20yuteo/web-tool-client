@@ -15,7 +15,6 @@ function App() {
         method: "POST",
         path: "/request",
         body: {
-          "name": "tatsuki",
           "answer": "test"
         }
       })
