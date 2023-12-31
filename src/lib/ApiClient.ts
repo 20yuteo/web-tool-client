@@ -16,6 +16,7 @@ export async function apiClient<Response>(request: RequestIF): Promise<Response 
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "https://wtc.meet-app.link",
       },
+      mode: "cors",
       method: request.method,
       body: JSON.stringify(request.body),
     });
