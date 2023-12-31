@@ -14,7 +14,7 @@ export async function apiClient<Response>(request: RequestIF): Promise<Response 
     // const result = await fetch(`https://ntsrfhf53c.execute-api.ap-northeast-1.amazonaws.com/dev${request.path}`, {
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://wtc.meet-app.link",
       },
       method: request.method,
       body: JSON.stringify(request.body),
