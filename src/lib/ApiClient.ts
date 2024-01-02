@@ -8,13 +8,13 @@ type ResponseIF = {
   ok: boolean;
 }
 
+const apiURL = import.meta.env.VITE_API_URL || "http://localhost:3000/dev";
+
 export async function apiClient<Response>(request: RequestIF): Promise<Response & ResponseIF> {
   try {
-    const result = await fetch(`https://wta.meet-app.link${request.path}`, {
-    // const result = await fetch(`https://ntsrfhf53c.execute-api.ap-northeast-1.amazonaws.com/dev${request.path}`, {
+    const result = await fetch(`${apiURL}${request.path}`, {
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "https://wtc.meet-app.link",
       },
       mode: "cors",
       method: request.method,
