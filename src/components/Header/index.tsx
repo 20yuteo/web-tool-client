@@ -1,11 +1,12 @@
-import { FaHome, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
-import { Heading, Button, Icon } from "@chakra-ui/react";
+import { FaHome, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { Heading, Button, Icon, Image } from "@chakra-ui/react";
 import { useColorMode } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const { loginWithRedirect, logout, isAuthenticated, isLoading } = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated, isLoading, user } =
+    useAuth0();
 
   return (
     <div
@@ -39,6 +40,14 @@ const Header = () => {
           {colorMode === "light" ? "🌜" : "🌞"}
         </Button>
         <Icon as={FaHome} boxSize={6} cursor="pointer" />
+
+        {user &&
+          (user?.picture ? (
+            <Image src={user.picture} boxSize={8} borderRadius={16} />
+          ) : (
+            <Icon as={FaUser} boxSize={6} cursor="pointer" />
+          ))}
+
         {!isLoading &&
           (isAuthenticated ? (
             <Icon

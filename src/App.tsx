@@ -1,26 +1,25 @@
-import { useEffect, useState } from 'react'
-import { apiClient } from './lib/ApiClient'
-import { Header } from "./components/Header"
+import { useEffect, useState } from "react";
+import { apiClient } from "./lib/ApiClient";
+import { Header } from "./components/Header";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       const response = await apiClient<{
-        message: string
+        message: string;
       }>({
         method: "POST",
         path: "/request",
         body: {
-          "answer": "test"
-        }
-      })
+          answer: "test",
+        },
+      });
 
-      console.log("message", response)
-    })()
-  }
-  , [])
+      console.log("message", response);
+    })();
+  }, []);
 
   return (
     <div>
@@ -181,7 +180,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
