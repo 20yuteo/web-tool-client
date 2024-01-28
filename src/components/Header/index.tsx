@@ -2,6 +2,7 @@ import { FaHome, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { Heading, Button, Icon, Image } from "@chakra-ui/react";
 import { useColorMode } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
+import SC from "./style";
 
 const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -11,19 +12,12 @@ const Header = () => {
   return (
     <div
       style={{
-        width: "100%",
-        display: "flex",
-        justifyContent: "space-between",
-        position: "sticky",
-        top: 0,
-        borderBottom: "1px solid var(--chakra-colors-gray-200)",
+        ...SC.HeaderStyle,
         backgroundColor: `${
           colorMode === "light"
             ? "var(--chakra-colors-white)"
             : "var(--chakra-colors-black)"
         }`,
-        padding: "10px 20px",
-        alignItems: "center",
       }}
     >
       <Heading size="lg" cursor="pointer">
