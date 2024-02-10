@@ -9,9 +9,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
       <Auth0Provider
         domain="dev--5d5d4yp.us.auth0.com"
-        clientId="sFwi9sxX9EGDssUtsUg8tBcvlZFLuPli"
+        clientId="MUYxPX0wF8S742KaY48r8AxZKIZN11sc"
         authorizationParams={{
           redirect_uri: window.location.origin,
+          audience: "http://localhost:8000",
+          scope: "openid profile email",
         }}
       >
         <App />

@@ -55,7 +55,14 @@ const Header = () => {
               as={FaSignInAlt}
               boxSize={6}
               cursor="pointer"
-              onClick={() => loginWithRedirect()}
+              onClick={() =>
+                loginWithRedirect({
+                  authorizationParams: {
+                    redirect_uri: window.location.origin,
+                    audience: "http://localhost:8000",
+                  },
+                })
+              }
             />
           ))}
       </div>
